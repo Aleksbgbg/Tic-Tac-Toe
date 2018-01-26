@@ -1,3 +1,3 @@
-from Core import TicTacToe
+from Core import Game
 
-TicTacToe.TicTacToe().run()
+Game.TicTacToe().run()
