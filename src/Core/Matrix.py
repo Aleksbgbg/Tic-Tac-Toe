@@ -2,7 +2,7 @@ class Matrix:
     def __init__(self, height, width):
         self.height = height
         self.width = width
-        self.matrix = [" " for index in range(height * width)]
+        self.matrix = ["-" for _ in range(height * width)]
 
     def __getitem__(self, item):
         return self.matrix[self.map_index(item)]
@@ -15,4 +15,4 @@ class Matrix:
         return x + y * self.width
 
     def print(self):
-        print("\n".join(" ".join(self.map_index((row, column)) for column in range(self.width)) for row in range(self.height)))
+        print("\n".join(" ".join(self[column, row] for column in range(self.width)) for row in range(self.height)))

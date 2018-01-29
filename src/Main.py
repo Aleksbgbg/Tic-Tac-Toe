@@ -1,3 +1,6 @@
-from Core import Game
+from Core.Game import Game
 
-Game.TicTacToe().run()
+game = Game()
+
+while True:
+    game.run()
