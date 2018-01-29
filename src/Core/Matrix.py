@@ -13,3 +13,6 @@ class Matrix:
     def map_index(self, coordinate):
         x, y = coordinate
         return x + y * self.width
+
+    def print(self):
+        print("\n".join(" ".join(self.map_index((row, column)) for column in range(self.width)) for row in range(self.height)))
