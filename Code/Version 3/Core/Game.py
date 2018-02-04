@@ -39,6 +39,7 @@ class Game:
             return True
 
         if all(map(lambda symbol: symbol != "-", self.matrix)):
+            print("Draw!")
             return True
 
         return False
