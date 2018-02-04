@@ -11,8 +11,13 @@ class Matrix:
         self.matrix[self.map_index(key)] = value
 
     def map_index(self, coordinate):
-        x, y = coordinate
-        return x + y * self.width
+        if type(coordinate) is tuple:
+            x, y = coordinate
+            return x + y * self.width
+        elif type(coordinate) is int:
+            return coordinate
+
+        assert type(coordinate) is tuple or type(coordinate) is int
 
     def print(self):
         print("\n".join(" ".join(self[column, row] for column in range(self.width)) for row in range(self.height)))

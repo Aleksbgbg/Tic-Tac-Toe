@@ -2,7 +2,6 @@ from .Matrix import Matrix
 import re
 
 
-
 class Game:
     def __init__(self):
         self.matrix = Matrix(3, 3)
@@ -11,6 +10,9 @@ class Game:
     def run(self):
         self.compose_frame()
         self.update_model()
+
+    def compose_frame(self):
+        self.matrix.print()
 
     def update_model(self):
         while True:
@@ -23,6 +25,3 @@ class Game:
 
         self.matrix[int(match.group("x")) - 1, int(match.group("y")) - 1] = ["X", "O"][self.turn_index % 2]
         self.turn_index += 1
-
-    def compose_frame(self):
-        self.matrix.print()
