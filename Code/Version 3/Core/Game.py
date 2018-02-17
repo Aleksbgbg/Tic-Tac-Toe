@@ -57,11 +57,14 @@ class Game:
         while True:
             input_string = input("Enter coordinate: ")
 
-            match = re.match(r"^\(?(?P<x>[1-3]),? ?(?P<y>[1-3])\)?$",
+            match = re.match(r"^\(?(?P<x>\d+),? ?(?P<y>\d+)\)?$",
                              input_string)
 
             if match:
-                coordinate = (int(match.group("x")) - 1, int(match.group("y")) - 1)
+                def truncate(coordinate_point):
+                    return min(max(coordinate_point, 1), 3)
+                
+                coordinate = (truncate(int(match.group("x"))) - 1, truncate(int(match.group("y"))) - 1)
 
                 if is_bad_coordinate(coordinate):
                     print("Bad coordinate. Please try again.")
@@ -70,10 +73,10 @@ class Game:
                 set_symbol(coordinate)
                 break
 
-            match = re.match("^(?P<index>[1-9])$", input_string)
+            match = re.match("^(?P<index>\d+)$", input_string)
 
             if match:
-                coordinate = int(match.group("index")) - 1
+                coordinate = min(max(int(match.group("index")), 1), 9) - 1
 
                 if is_bad_coordinate(coordinate):
                     print("Bad coordinate. Please try again.")
